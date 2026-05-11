@@ -78,7 +78,7 @@ const CountdownClock = () => {
           onClick={resetClock}
           className="px-6 py-2 bg-gray-700 hover:bg-gray-600 rounded font-bold transition-colors"
         >
-          Reset
+          Restart
         </button>
       </div>
 
