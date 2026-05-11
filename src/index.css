@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fantasy-dark: #0a0a0c;
+  --color-fantasy-card: #16161a;
+  --color-fantasy-border: #2d2d35;
+  --color-fantasy-accent: #8b2d2d;
+  --color-fantasy-gold: #c5a059;
+  --color-fear-cold: #4a5568;
+  --color-fear-warning: #d97706;
+  --color-fear-danger: #dc2626;
+  --color-fear-fiery: #ef4444;
+}
+
+:root {
+  background-color: var(--color-fantasy-dark);
+  color: #e2e8f0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar for dark fantasy feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-fantasy-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-fantasy-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fantasy-accent);
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(220, 38, 38, 0);
+  }
+}
+
+.animate-fear-pulse {
+  animation: pulse-red 0.5s ease-out;
+}
+
+@keyframes fiery-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px #ef4444);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #f97316);
+  }
+}
+
+.animate-fiery {
+  animation: fiery-glow 2s infinite;
+}
