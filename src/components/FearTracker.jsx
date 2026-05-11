@@ -82,8 +82,9 @@ const FearTracker = () => {
   return (
     <div className={`bg-fantasy-card border border-fantasy-border p-6 rounded-lg shadow-xl flex flex-col items-center space-y-4 relative overflow-hidden transition-all duration-500 ${isPulsing ? 'animate-fear-pulse' : ''} ${fear >= 10 ? 'ring-2 ring-fear-fiery' : ''}`}>
       {fearImage && (
-        <div className="absolute inset-0 opacity-20 z-0">
-          <img src={fearImage} alt="Fear background" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 z-0">
+          <img src={fearImage} alt="Fear background" className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-fantasy-card via-transparent to-fantasy-card opacity-80"></div>
         </div>
       )}
 

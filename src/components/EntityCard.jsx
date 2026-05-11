@@ -34,6 +34,24 @@ const EntityCard = ({ entity, updateEntity, removeEntity, isAdversary }) => {
     }
   };
 
+  const getStatColor = (stat) => {
+    switch (stat) {
+      case 'health': return 'text-red-500';
+      case 'evasion': return 'text-green-500';
+      case 'stress': return 'text-yellow-500';
+      default: return 'text-gray-500';
+    }
+  };
+
+  const getStatBg = (stat) => {
+    switch (stat) {
+      case 'health': return 'hover:bg-red-900/40';
+      case 'evasion': return 'hover:bg-green-900/40';
+      case 'stress': return 'hover:bg-yellow-900/40';
+      default: return 'hover:bg-fantasy-accent';
+    }
+  };
+
   return (
     <div className={`relative bg-fantasy-card border ${isAdversary ? 'border-red-900 shadow-red-900/20' : 'border-fantasy-border shadow-black/40'} rounded-lg overflow-hidden shadow-xl transition-all duration-300 group`}>
       {/* Portrait Section */}
@@ -72,21 +90,21 @@ const EntityCard = ({ entity, updateEntity, removeEntity, isAdversary }) => {
         <div className="grid grid-cols-3 gap-2">
           {['health', 'evasion', 'stress'].map((stat) => (
             <div key={stat} className="flex flex-col items-center">
-              <span className="text-[10px] uppercase font-bold text-gray-500">{stat}</span>
+              <span className={`text-[10px] uppercase font-bold ${getStatColor(stat)}`}>{stat}</span>
               <div className="flex items-center space-x-1">
                 <button
                   onClick={() => handleStatChange(stat, -1)}
-                  className="w-5 h-5 bg-fantasy-border hover:bg-fantasy-accent rounded text-xs"
+                  className={`w-5 h-5 bg-fantasy-border ${getStatBg(stat)} rounded text-xs transition-colors`}
                 >-</button>
                 <input
                   type="number"
                   value={entity[stat]}
                   onChange={(e) => handleManualStatChange(stat, e.target.value)}
-                  className="w-8 bg-transparent text-center font-bold text-sm outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className={`w-8 bg-transparent text-center font-bold text-sm outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${getStatColor(stat)}`}
                 />
                 <button
                   onClick={() => handleStatChange(stat, 1)}
-                  className="w-5 h-5 bg-fantasy-border hover:bg-fantasy-accent rounded text-xs"
+                  className={`w-5 h-5 bg-fantasy-border ${getStatBg(stat)} rounded text-xs transition-colors`}
                 >+</button>
               </div>
             </div>
